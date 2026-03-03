@@ -381,8 +381,6 @@ function card(team,idx,pm,sm){
     <div class="vtile ${vc.c} ${wiped?'wiped':''}">
       <div class="vemo">${vc.e}</div><div class="vtag">${vc.t}</div>
       <div class="valive">${alive}</div>
-      <div class="vpts">${sub} pts</div>
-      <div class="vsub">${owned?dead+' lost':'none'}</div>
     </div>`).join('');
 
   const sbRows=vb.map(({vc,alive,pts,sub})=>
@@ -467,5 +465,6 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
 
