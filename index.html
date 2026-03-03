@@ -128,30 +128,42 @@ main{flex:1;padding:12px}
 .wealth-bar{height:3px;background:rgba(138,158,106,.15);border-radius:2px;overflow:hidden;margin:8px 0}
 .wealth-fill{height:100%;background:linear-gradient(90deg,#5A7840,#8A9E6A);border-radius:2px}
 .wealth-breakdown{display:flex;flex-direction:column;gap:3px}
-.wb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;color:#8898B4;padding:1px 0}
-.wb-lbl{color:#7A9ED4;
-  font-weight: 600; /* Makes it slightly bolder */
-  letter-spacing: 0.02em;
+.wb-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace; /* Changed to match tech look */
+  font-size: 16px; /* Increased to 16px */
+  padding: 6px 0;
 }
-.wb-num{color:#C0CCE0;font-size:16px;font-weight:600}
+
+.wb-lbl {
+  color: #7A9ED4;
+  font-weight: 500;
+}
+
+.wb-num {
+  color: #C0CCE0;
+  font-weight: 700;
+  font-size: 16px; /* Matched to 16px */
+}
 .wb-divider{height:1px;background:rgba(87,108,168,.15);margin:4px 0}
 .wb-row.wb-total{padding-top:8px;margin-top:4px;flex-direction:column;align-items:flex-start;gap:2px}
 .wb-row.wb-total .wb-num{color:#9AB274;font-family:'Bebas Neue',cursive;font-size:22px}
-.stock-row{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;color:#8898B4;padding:1px 0}
-.sr-label{flex:1}.sr-qty{color:#5A6E8A;margin:0 8px}sr-val {
-
-  color: #A0B0CC;
-
-  min-width: 40px;
-
-  text-align: right;
-
-  font-size: 16px; /* Slightly larger for the numbers */
-
-  font-family: 'Share Tech Mono', monospace; /* Looks more "data-heavy" */
-
+.stock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 16px; /* Matched to 16px */
+  padding: 4px 0;
 }
-
+.sr-val {
+  color: #A0B0CC;
+  min-width: 30px;
+  text-align: right;
+  font-weight: 700;
+}
 /* ── CHANGE 2: Battle bonus — much larger ── */
 .bonus-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:6px 10px;background:rgba(138,158,106,.08);border:1px solid rgba(138,158,106,.25);border-radius:7px}
 .bonus-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:#8A9E6A;letter-spacing:.12em; font-weight: 700}
@@ -461,6 +473,7 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
 
 
