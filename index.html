@@ -8,22 +8,22 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07090f;--bg2:#0c101a;
-  --tank:#4ade80;--navy:#60a5fa;--air:#a78bfa;
-  --gold:#f59e0b;--score:#f97316;--capital:#38bdf8;--wealth:#818cf8;
-  --red:#f87171;--border:rgba(255,255,255,0.06);
-  --text:#cbd5e1;--muted:#334155;
+  --bg:#2a2933;--bg2:#322f3d;
+  --tank:#f9dc5c;--navy:#3185fc;--air:#e84855;
+  --gold:#f9dc5c;--score:#3185fc;--capital:#3185fc;--wealth:#f9dc5c;
+  --red:#e84855;--border:rgba(255,255,255,0.08);
+  --text:#f0eef6;--muted:#6b6880;
 }
 html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
 
 /* BG */
 .bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.14;animation:orbF linear infinite}
-.o1{width:700px;height:700px;background:#7c3aed;top:-250px;left:-100px;animation-duration:28s}
-.o2{width:600px;height:600px;background:#1d4ed8;top:20%;right:-180px;animation-duration:35s;animation-direction:reverse}
-.o3{width:500px;height:500px;background:#0f766e;bottom:-120px;left:25%;animation-duration:22s}
-.o4{width:400px;height:400px;background:#4338ca;top:50%;left:10%;animation-duration:30s}
-.o5{width:300px;height:300px;background:#166534;bottom:10%;right:15%;animation-duration:18s;animation-direction:reverse}
+.o1{width:700px;height:700px;background:#e84855;top:-250px;left:-100px;animation-duration:28s}
+.o2{width:600px;height:600px;background:#3185fc;top:20%;right:-180px;animation-duration:35s;animation-direction:reverse}
+.o3{width:500px;height:500px;background:#f9dc5c;bottom:-120px;left:25%;animation-duration:22s}
+.o4{width:400px;height:400px;background:#403f4c;top:50%;left:10%;animation-duration:30s}
+.o5{width:300px;height:300px;background:#e84855;bottom:10%;right:15%;animation-duration:18s;animation-direction:reverse}
 @keyframes orbF{0%{transform:translate(0,0)scale(1)}33%{transform:translate(50px,-35px)scale(1.08)}66%{transform:translate(-25px,45px)scale(.93)}100%{transform:translate(0,0)scale(1)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px}
 .scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.1) 3px,rgba(0,0,0,.1) 4px)}
@@ -33,7 +33,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
 /* HEADER */
 header{padding:0 16px;height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(4,6,10,.8);backdrop-filter:blur(16px);position:sticky;top:0;z-index:50;gap:10px}
-.logo{font-family:'Bebas Neue',cursive;font-size:clamp(18px,4vw,30px);letter-spacing:.1em;background:linear-gradient(90deg,#60a5fa,#818cf8,#a78bfa,#60a5fa);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ls 6s linear infinite;white-space:nowrap}
+.logo{font-family:'Bebas Neue',cursive;font-size:clamp(18px,4vw,30px);letter-spacing:.1em;background:linear-gradient(90deg,#e84855,#f9dc5c,#3185fc,#e84855);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ls 6s linear infinite;white-space:nowrap}
 @keyframes ls{0%{background-position:0%}100%{background-position:400%}}
 .hdr-r{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .live-badge{display:flex;align-items:center;gap:5px;background:rgba(57,255,106,.08);border:1px solid rgba(57,255,106,.25);border-radius:20px;padding:4px 10px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tank);letter-spacing:.1em}
@@ -61,7 +61,7 @@ main{flex:1;padding:12px}
 @media(min-width:900px){main{padding:16px 24px;max-width:1800px;margin:0 auto}}
 
 /* SECTION LABEL */
-.slbl{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.slbl{font-family:'Inter',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .slbl::before,.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
 .slbl::before{flex:0 0 16px}
 
@@ -122,20 +122,21 @@ main{flex:1;padding:12px}
 .cbody{padding:10px 12px 12px 16px}
 
 /* TOTAL WEALTH */
-.wealth-section{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:8px;padding:8px 10px;margin-bottom:10px}
-.wealth-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:5px}
-.wealth-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--wealth);letter-spacing:.15em;opacity:.8}
-.wealth-val{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--wealth);line-height:1}
-.wealth-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(167,139,250,.4);margin-left:3px}
-.wealth-bar{height:3px;background:rgba(167,139,250,.1);border-radius:2px;overflow:hidden;margin-bottom:8px}
-.wealth-fill{height:100%;background:linear-gradient(90deg,rgba(167,139,250,.4),rgba(167,139,250,.9));border-radius:2px}
-.wealth-breakdown{display:flex;flex-direction:column;gap:2px}
-.wb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);padding:1px 0}
-.wb-lbl{color:rgba(0,229,255,.6)}
-.wb-num{color:rgba(255,255,255,.5);font-size:9px}
-.wb-row.wb-total{border-top:1px solid rgba(167,139,250,.15);margin-top:3px;padding-top:4px}
-.wb-row.wb-total .wb-num{color:var(--wealth);font-family:'Bebas Neue',cursive;font-size:14px}
-.stock-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.25);padding:1px 0}
+.wealth-section{background:rgba(249,220,92,.06);border:1px solid rgba(249,220,92,.18);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.wealth-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px}
+.wealth-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--wealth);letter-spacing:.15em;opacity:.7}
+.wealth-val{font-family:'Bebas Neue',cursive;font-size:30px;color:var(--wealth);line-height:1}
+.wealth-unit{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(249,220,92,.4);margin-left:3px}
+.wealth-bar{height:3px;background:rgba(249,220,92,.1);border-radius:2px;overflow:hidden;margin:8px 0}
+.wealth-fill{height:100%;background:linear-gradient(90deg,rgba(249,220,92,.4),rgba(249,220,92,.85));border-radius:2px}
+.wealth-breakdown{display:flex;flex-direction:column;gap:3px}
+.wb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.4);padding:1px 0}
+.wb-lbl{color:rgba(49,133,252,.8)}
+.wb-num{color:rgba(255,255,255,.6);font-size:11px;font-weight:600}
+.wb-divider{height:1px;background:rgba(255,255,255,.07);margin:4px 0}
+.wb-row.wb-total{padding-top:4px}
+.wb-row.wb-total .wb-num{color:var(--wealth);font-family:'Bebas Neue',cursive;font-size:15px}
+.stock-row{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.35);padding:1px 0}
 .sr-label{flex:1}.sr-qty{color:rgba(255,255,255,.2);margin:0 8px}.sr-val{color:rgba(255,255,255,.4);min-width:30px;text-align:right}
 
 /* bonus */
@@ -413,8 +414,9 @@ function card(team,idx,pm,sm){
         <div class="wealth-bar"><div class="wealth-fill" style="width:${wealthPct}%"></div></div>
         <div class="wealth-breakdown">
           <div class="wb-row"><span class="wb-lbl">💧 Liquid Capital</span><span class="wb-num">${team._liquid}</span></div>
+          <div class="wb-divider"></div>
           ${stockPortfolio}
-          <div class="wb-row wb-total"><span>📊 Stock Portfolio</span><span class="wb-num">${team._stockVal}</span></div>
+          <div class="wb-row wb-total"><span style="color:rgba(255,255,255,.4)">📊 Stock Portfolio</span><span class="wb-num">${team._stockVal}</span></div>
         </div>
       </div>
       ${bonus>0?`<div class="bonus-row"><div class="bonus-lbl">⚔ BATTLE BONUS</div><div class="bonus-val">+${bonus}</div></div>`:''}
