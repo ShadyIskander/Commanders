@@ -6,7 +6,7 @@
 <title>HOSTILE TAKEOVER</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{boax-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#04060a;--bg2:#080c12;--bg3:#0d1520;
   --tank:#39ff6a;--navy:#00b4ff;--air:#c084fc;
@@ -177,13 +177,13 @@ const VC={
   AirForce: {e:'✈', t:'AIR', c:'vair'},
 };
 let hist={TANK:[],NAVY:[],AIR:[]};
-let countdown=10;
+let countdown=5;
 
-// ── COUNTDOWN ──
+// ── COUNTDOWN (drives all refreshes — nothing else calls go()) ──
 function startCountdown(){
   setInterval(()=>{
     countdown--;
-    if(countdown<=0){ countdown=10; go(); }
+    if(countdown<=0){ countdown=5; go(); }
     tickCD();
   },1000);
   tickCD();
@@ -192,18 +192,16 @@ function startCountdown(){
 function tickCD(){
   const ring=document.getElementById('cring');
   const txt=document.getElementById('ctxt');
-  // fill drains as countdown decreases: full at 10, empty at 0
   if(ring){
-    const offset=62.8*(countdown/10); // starts full (0 offset), drains to 62.8
-    ring.style.strokeDashoffset=62.8-offset;
-    ring.style.stroke=countdown>4?'var(--capital)':'var(--gold)';
+    ring.style.strokeDashoffset=62.8-(62.8*(countdown/5));
+    ring.style.stroke=countdown>2?'var(--capital)':'var(--gold)';
   }
   if(txt) txt.textContent=countdown;
 }
 
-// ── FETCH with cache-bust ──
+// ── FETCH — double cache bust: timestamp + random ──
 async function fetchTab(tab){
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tab)}&_=${Date.now()}`;
+  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tab)}&t=${Date.now()}&r=${Math.random().toString(36).slice(2)}`;
   const r=await fetch(url,{cache:'no-store'});
   if(!r.ok) throw new Error(`HTTP ${r.status} on tab "${tab}"`);
   const txt=await r.text();
@@ -261,10 +259,10 @@ function buildAll(teams,sm,pm){
 }
 
 function buildStocks(sm,pm){
-  const cfg=[{k:'TANK',c:'stank',n:'Tank Battalion',e:'🪖',vk:'Tanks'},{k:'NAVY',c:'snavy',n:'Navy SEALs',e:'⚓',vk:'NavySeals'},{k:'AIR',c:'sair',n:'Air Force',e:'✈',vk:'AirForce'}];
-  return`<div class="slbl">LIVE MARKET PRICES</div><div class="stocks-bar">${cfg.map(({k,c,n,e,vk})=>{
+  const cfg=[{k:'TANK',c:'stank',n:'Tank Battalion',e:'🪖',vk:'Tanks',label:'Tank Stock'},{k:'NAVY',c:'snavy',n:'Navy SEALs',e:'⚓',vk:'NavySeals',label:'Navy Stock'},{k:'AIR',c:'sair',n:'Air Force',e:'✈',vk:'AirForce',label:'Air Stock'}];
+  return`<div class="slbl">LIVE MARKET PRICES</div><div class="stocks-bar">${cfg.map(({k,c,n,e,vk,label})=>{
     const d=sm[k]||{price:0,change:0};const ch=d.change;
-    return`<div class="scard ${c}"><div class="sdept">${e} ${k}</div><div class="snum">${d.price}</div><div class="sdelta ${ch>0?'tup':ch<0?'tdn':'tfl'}">${ch>0?'▲ +'+ch:ch<0?'▼ '+ch:'— 0'}</div><div class="spts">Cost: ${pm[vk]?.price??'?'} cap · ${pm[vk]?.points??'?'} pts/unit</div><canvas class="spark" id="sk-${k}"></canvas></div>`;
+    return`<div class="scard ${c}"><div class="sdept">${e} ${label}</div><div class="snum">${d.price}</div><div class="sdelta ${ch>0?'tup':ch<0?'tdn':'tfl'}">${ch>0?'▲ +'+ch:ch<0?'▼ '+ch:'— 0'}</div><div class="spts">Cost: ${pm[vk]?.price??'?'} cap · ${pm[vk]?.points??'?'} pts/unit</div><canvas class="spark" id="sk-${k}"></canvas></div>`;
   }).join('')}</div>`;
 }
 
@@ -350,6 +348,7 @@ function showErr(msg){
 }
 
 // ── BOOT ──
+// Fetch immediately on load, then countdown handles all future refreshes
 go();
 startCountdown();
 </script>
