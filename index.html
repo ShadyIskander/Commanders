@@ -4,36 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOSTILE TAKEOVER</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#04060a;--bg2:#080c12;
-  --tank:#39ff6a;--navy:#00b4ff;--air:#c084fc;
-  --gold:#ffd700;--score:#ff6b00;--capital:#00e5ff;--wealth:#a78bfa;
-  --red:#ff3c5a;--border:rgba(255,255,255,0.07);
-  --text:#dde8f0;--muted:#3a5060;
+  --bg:#07090f;--bg2:#0c101a;
+  --tank:#4ade80;--navy:#60a5fa;--air:#a78bfa;
+  --gold:#f59e0b;--score:#f97316;--capital:#38bdf8;--wealth:#818cf8;
+  --red:#f87171;--border:rgba(255,255,255,0.06);
+  --text:#cbd5e1;--muted:#334155;
 }
-html,body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
 
 /* BG */
 .bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.14;animation:orbF linear infinite}
-.o1{width:700px;height:700px;background:#ff3c5a;top:-250px;left:-100px;animation-duration:28s}
-.o2{width:600px;height:600px;background:#00e5ff;top:20%;right:-180px;animation-duration:35s;animation-direction:reverse}
-.o3{width:500px;height:500px;background:#ffd700;bottom:-120px;left:25%;animation-duration:22s}
-.o4{width:400px;height:400px;background:#c084fc;top:50%;left:10%;animation-duration:30s}
-.o5{width:300px;height:300px;background:#39ff6a;bottom:10%;right:15%;animation-duration:18s;animation-direction:reverse}
+.o1{width:700px;height:700px;background:#7c3aed;top:-250px;left:-100px;animation-duration:28s}
+.o2{width:600px;height:600px;background:#1d4ed8;top:20%;right:-180px;animation-duration:35s;animation-direction:reverse}
+.o3{width:500px;height:500px;background:#0f766e;bottom:-120px;left:25%;animation-duration:22s}
+.o4{width:400px;height:400px;background:#4338ca;top:50%;left:10%;animation-duration:30s}
+.o5{width:300px;height:300px;background:#166534;bottom:10%;right:15%;animation-duration:18s;animation-direction:reverse}
 @keyframes orbF{0%{transform:translate(0,0)scale(1)}33%{transform:translate(50px,-35px)scale(1.08)}66%{transform:translate(-25px,45px)scale(.93)}100%{transform:translate(0,0)scale(1)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px}
 .scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.1) 3px,rgba(0,0,0,.1) 4px)}
-.beam{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.4),transparent);animation:beam 8s linear infinite}
+.beam{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(96,165,250,.25),transparent);animation:beam 10s linear infinite}
 @keyframes beam{0%{top:-2px}100%{top:100vh}}
 .app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
 
 /* HEADER */
 header{padding:0 16px;height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(4,6,10,.8);backdrop-filter:blur(16px);position:sticky;top:0;z-index:50;gap:10px}
-.logo{font-family:'Bebas Neue',cursive;font-size:clamp(18px,4vw,30px);letter-spacing:.1em;background:linear-gradient(90deg,#ff3c5a,#ff6b00,#ffd700,#39ff6a,#00e5ff,#c084fc,#ff3c5a);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ls 5s linear infinite;white-space:nowrap}
+.logo{font-family:'Bebas Neue',cursive;font-size:clamp(18px,4vw,30px);letter-spacing:.1em;background:linear-gradient(90deg,#60a5fa,#818cf8,#a78bfa,#60a5fa);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ls 6s linear infinite;white-space:nowrap}
 @keyframes ls{0%{background-position:0%}100%{background-position:400%}}
 .hdr-r{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .live-badge{display:flex;align-items:center;gap:5px;background:rgba(57,255,106,.08);border:1px solid rgba(57,255,106,.25);border-radius:20px;padding:4px 10px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tank);letter-spacing:.1em}
@@ -82,7 +82,7 @@ main{flex:1;padding:12px}
 
 .icard-emoji{font-size:16px;line-height:1}
 .icard-label{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;text-align:center}
-.icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);text-shadow:0 0 14px var(--ic);line-height:1}
+.icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);line-height:1}
 .icard-sub{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,255,255,.22);letter-spacing:.08em}
 
 /* divider line between groups on mobile */
@@ -113,11 +113,11 @@ main{flex:1;padding:12px}
 .chead{padding:10px 12px 8px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.2);gap:8px}
 .crank{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.12em;line-height:1;margin-bottom:2px}
 .crank.gold{color:var(--gold);font-size:12px}
-.cname{font-family:'Bebas Neue',cursive;font-size:clamp(14px,2vw,18px);letter-spacing:.06em;color:var(--tc);text-shadow:0 0 16px rgba(var(--tcr),.45);line-height:1;word-break:break-word}
+.cname{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(13px,2vw,16px);letter-spacing:.02em;color:var(--tc);line-height:1.2;word-break:break-word}
+.score-val{font-family:'Bebas Neue',cursive;font-size:clamp(24px,3.5vw,32px);color:var(--score);line-height:1}
 .score-box{text-align:right;flex-shrink:0}
-.score-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--score);letter-spacing:.15em;opacity:.8;margin-bottom:1px}
-.score-val{font-family:'Bebas Neue',cursive;font-size:clamp(22px,3.5vw,30px);color:var(--score);text-shadow:0 0 20px rgba(255,107,0,.5);line-height:1}
-.score-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,107,0,.5);margin-left:2px}
+.score-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--score);letter-spacing:.15em;opacity:.7;margin-bottom:1px}
+.score-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(249,115,22,.4);margin-left:2px}
 
 .cbody{padding:10px 12px 12px 16px}
 
@@ -125,7 +125,7 @@ main{flex:1;padding:12px}
 .wealth-section{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:8px;padding:8px 10px;margin-bottom:10px}
 .wealth-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:5px}
 .wealth-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--wealth);letter-spacing:.15em;opacity:.8}
-.wealth-val{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--wealth);text-shadow:0 0 18px rgba(167,139,250,.5);line-height:1}
+.wealth-val{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--wealth);line-height:1}
 .wealth-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(167,139,250,.4);margin-left:3px}
 .wealth-bar{height:3px;background:rgba(167,139,250,.1);border-radius:2px;overflow:hidden;margin-bottom:8px}
 .wealth-fill{height:100%;background:linear-gradient(90deg,rgba(167,139,250,.4),rgba(167,139,250,.9));border-radius:2px}
@@ -152,7 +152,7 @@ main{flex:1;padding:12px}
 .vtile.wiped{opacity:.2;filter:grayscale(1)}
 .vemo{font-size:14px;line-height:1;margin-bottom:2px}
 .vtag{font-family:'Share Tech Mono',monospace;font-size:7px;color:var(--vc);letter-spacing:.08em;margin-bottom:2px}
-.valive{font-family:'Bebas Neue',cursive;font-size:16px;color:var(--vc);text-shadow:0 0 8px var(--vc);line-height:1}
+.valive{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--vc);line-height:1}
 .vpts{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,107,0,.7);margin-top:1px}
 .vsub{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,255,255,.15);margin-top:1px}
 
@@ -381,6 +381,7 @@ function card(team,idx,pm,sm){
       <div class="vemo">${vc.e}</div><div class="vtag">${vc.t}</div>
       <div class="valive">${alive}</div>
       <div class="vpts">${sub} pts</div>
+      <div class="vsub">${owned?dead+' lost':'none'}</div>
     </div>`).join('');
 
   const sbRows=vb.map(({vc,alive,pts,sub})=>
@@ -388,14 +389,13 @@ function card(team,idx,pm,sm){
   ).join('');
 
   const stockPortfolio=[
-    {e:'🪖',lbl:'Tank Stock', n:team._tankS,price:sm['TANK']?.price||0},
-    {e:'⚓',lbl:'Navy Stock', n:team._navyS,price:sm['NAVY']?.price||0},
-    {e:'✈', lbl:'Air Stock',  n:team._airS, price:sm['AIR']?.price||0},
-  ].map(({e,lbl,n,price})=>`
+    {e:'🪖',lbl:'Tank Stock', n:team._tankS, color:'var(--tank)'},
+    {e:'⚓',lbl:'Navy Stock', n:team._navyS, color:'var(--navy)'},
+    {e:'✈', lbl:'Air Stock',  n:team._airS,  color:'var(--air)'},
+  ].map(({e,lbl,n,color})=>`
     <div class="stock-row">
-      <span class="sr-label">${e} ${lbl}</span>
-      <span class="sr-qty">${n} × ${price}</span>
-      <span class="sr-val">${n*price}</span>
+      <span class="sr-label" style="color:${color}">${e} ${lbl}</span>
+      <span class="sr-val" style="color:${color};font-weight:600">${n}</span>
     </div>`).join('');
 
   return`<div class="tcard ${rankClass}" style="--tc:${c.h};--tcr:${c.r};">
@@ -420,6 +420,11 @@ function card(team,idx,pm,sm){
       ${bonus>0?`<div class="bonus-row"><div class="bonus-lbl">⚔ BATTLE BONUS</div><div class="bonus-val">+${bonus}</div></div>`:''}
       <div class="vlbl">◈ VEHICLES · ALIVE / SCORE</div>
       <div class="vrow">${vhml}</div>
+      <div class="score-breakdown">
+        ${sbRows}
+        ${bonus>0?`<div class="sb-row"><span>⚔ BATTLE BONUS</span><span class="sb-val" style="color:var(--gold)">${bonus}</span></div>`:''}
+        <div class="sb-row total"><span>TOTAL SCORE</span><span class="sb-val">${team._score}</span></div>
+      </div>
     </div>
   </div>`;
 }
@@ -464,8 +469,3 @@ startCountdown();
 </script>
 </body>
 </html>
-
-
-
-
-
